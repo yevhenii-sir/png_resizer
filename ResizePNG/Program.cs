@@ -55,6 +55,7 @@ namespace ResizePNG
                     sizeMagick.IgnoreAspectRatio = true;
 
                     image.Resize(sizeMagick);
+                    image.Quality = quality;
 
                     var exifProfile = image.GetExifProfile();
                     var iptcProfile = image.GetIptcProfile();
