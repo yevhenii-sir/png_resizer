@@ -12,13 +12,13 @@ namespace ResizePNG
             var quality = 100;
             bool saveOldImages = false;
 
-            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var path = AppDomain.CurrentDomain.BaseDirectory + "\\settingResize.ini";
 
-            if (File.Exists(path + "\\settingResize.ini"))
+            if (File.Exists(path))
             {
                 try
                 {
-                    using (var streamReader = new StreamReader(path + "\\settingResize.ini"))
+                    using (var streamReader = new StreamReader(path))
                     {
                         size = Convert.ToInt32(streamReader.ReadLine());
                         quality = Convert.ToInt32(streamReader.ReadLine());
@@ -33,7 +33,7 @@ namespace ResizePNG
             }
             else
             {
-                using (var streamWriter = new StreamWriter(path + "\\settingResize.ini"))
+                using (var streamWriter = new StreamWriter(path))
                 {
                     streamWriter.WriteLine("100\r\n100\r\nfalse");
                 }
